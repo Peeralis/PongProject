@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date             : Wed Dec  6 15:32:41 2023
+| Date             : Wed Dec  6 15:52:53 2023
 | Host             : DESKTOP-KTBA880 running 64-bit major release  (build 9200)
 | Command          : report_power -file system_power_routed.rpt -pb system_power_summary_routed.pb -rpx system_power_routed.rpx
 | Design           : system
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.109        |
+| Total On-Chip Power (W)  | 0.105        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.038        |
+| Dynamic (W)              | 0.034        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.5         |
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.001 |      842 |       --- |             --- |
-|   LUT as Logic |     0.001 |      349 |     20800 |            1.68 |
-|   CARRY4       |    <0.001 |       52 |      8150 |            0.64 |
+| Slice Logic    |     0.001 |      837 |       --- |             --- |
+|   LUT as Logic |     0.001 |      336 |     20800 |            1.62 |
 |   Register     |    <0.001 |      260 |     41600 |            0.63 |
-|   F7/F8 Muxes  |    <0.001 |        1 |     32600 |           <0.01 |
+|   CARRY4       |    <0.001 |       52 |      8150 |            0.64 |
+|   F7/F8 Muxes  |    <0.001 |        2 |     32600 |           <0.01 |
 |   Others       |     0.000 |       57 |       --- |             --- |
 |   BUFG         |     0.000 |        1 |        32 |            3.13 |
-| Signals        |     0.002 |      570 |       --- |             --- |
+| Signals        |     0.002 |      557 |       --- |             --- |
 | Block RAM      |     0.001 |      0.5 |        50 |            1.00 |
-| I/O            |     0.032 |       30 |       106 |           28.30 |
+| I/O            |     0.028 |       30 |       106 |           28.30 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.109 |          |           |                 |
+| Total          |     0.105 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.015 |       0.006 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.014 |       0.001 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.010 |       0.009 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.009 |       0.008 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -143,8 +143,7 @@ Table of Contents
 +----------------+-----------+
 | Name           | Power (W) |
 +----------------+-----------+
-| system         |     0.038 |
-|   graph_unit   |     0.001 |
+| system         |     0.034 |
 |   text_unit    |     0.001 |
 |     ascii_unit |     0.001 |
 +----------------+-----------+

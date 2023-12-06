@@ -231,14 +231,14 @@ module text(
     
     // mux for ascii ROM addresses and rgb
     always @* begin
-        text_rgb = 12'h0FF;     // aqua background
+        text_rgb = 12'h000;     // black background
         
         if(score_on) begin
             char_addr = char_addr_s;
             row_addr = row_addr_s;
             bit_addr = bit_addr_s;
             if(ascii_bit)
-                text_rgb = 12'hF00; // red
+                text_rgb = 12'hFFF; // white text
         end
         
 //        else if(rule_on) begin

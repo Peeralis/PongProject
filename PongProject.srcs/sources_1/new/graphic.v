@@ -89,8 +89,8 @@ module graphic(
     reg [9:0] x_delta_reg, x_delta_next;
     reg [9:0] y_delta_reg, y_delta_next;
     // positive or negative ball velocity
-    parameter BALL_VELOCITY_POS = 2;    // ball speed positive pixel direction(down, right)
-    parameter BALL_VELOCITY_NEG = -2;   // ball speed negative pixel direction(up, left)
+    parameter BALL_VELOCITY_POS = 1.5;    // ball speed positive pixel direction(down, right)
+    parameter BALL_VELOCITY_NEG = -1.5;   // ball speed negative pixel direction(up, left)
     // round ball from square image
     wire [2:0] rom_addr, rom_col;   // 3-bit rom address and rom column
     reg [7:0] rom_data;             // data at current rom address
@@ -149,11 +149,11 @@ module graphic(
 //    assign ball_rgb   = 12'hF00;    // red ball
 //    assign bg_rgb     = 12'h0FF;    // aqua background
     
-    assign wall_rgb   = 12'h000;    // black walls
-    assign padr_rgb   = 12'h000;    // black paddle
-    assign padl_rgb   = 12'h000;    // black paddle
-    assign ball_rgb   = 12'h0F0;    // green ball
-    assign bg_rgb     = 12'hFFF;    // white background
+    assign wall_rgb   = 12'hFFF;    // white walls
+    assign padr_rgb   = 12'hFFF;    // white paddle
+    assign padl_rgb   = 12'hFFF;    // white paddle
+    assign ball_rgb   = 12'hFFF;    // white ball
+    assign bg_rgb     = 12'h000;    // black background
 
     
     
