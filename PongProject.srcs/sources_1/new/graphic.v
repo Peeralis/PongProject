@@ -236,10 +236,10 @@ module graphic(
                     hit = 1'b1;   //hit left      
         end
         
-        else if(x_ball_r >= X_MAX) // miss right
+        else if(x_ball_r < X_MAX && x_ball_l > x_padr_r) // miss right
             missr = 1'b1;
             
-        else if(x_ball_l <= 0) //miss left
+        else if(x_ball_l > 0 && x_ball_r < x_padl_l) //miss left
             missl = 1'b1;
     end                    
     

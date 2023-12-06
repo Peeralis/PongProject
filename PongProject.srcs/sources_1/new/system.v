@@ -51,7 +51,7 @@ module system(
     wire [11:0] graph_rgb, text_rgb;
     reg [11:0] rgb_reg, rgb_next;
     wire [3:0] digl0, digl1, digr0, digr1;
-    reg [3:0] r_digr0, r_digr1, r_digl0, r_digl1; //add
+//    reg [3:0] r_digr0, r_digr1, r_digl0, r_digl1; //add
     reg gra_still, d_incl, d_incr, d_clr, timer_start;
     wire timer_tick, timer_up;
 //    reg [1:0] ball_reg, ball_next;
@@ -177,7 +177,7 @@ module system(
 //                    pass;
                 
                 if(missr) begin
-                    if(r_digl1==9 && r_digl0==9)
+                    if(digl1==9 && digl0==9)
                         state_next = over;
                     
                     else
@@ -189,7 +189,7 @@ module system(
                 end
                 
                 else if(missl) begin
-                    if(r_digr1==9 && r_digr0==9)
+                    if(digr1==9 && digr0==9)
                         state_next = over;
                     
                     else
@@ -235,12 +235,11 @@ module system(
     
     ////////////////////////////////////////
     // Assign number
-    wire [3:0] num3,num2,num1,num0; // From left to right
+    reg [3:0] num3,num2,num1,num0; // From left to right
     
-    assign num0=r_digr0;
-    assign num1=r_digr1;
-    assign num2=r_digl0;
-    assign num3=r_digl1;
+    always @(posedge clk) begin
+       {num3,num2,num1,num0} = {digl1,digl0,digr1,digr0};
+    end
 
     wire an0,an1,an2,an3;
     assign an={an3,an2,an1,an0};

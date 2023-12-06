@@ -22,10 +22,10 @@ module uart(
 
             // Check for specific characters 'w', 's', 'i', and 'k'
             case (data_in)
-                8'h77: received_char_player1 = 1; // 'w' pressed for player 1
-                8'h73: received_char_player1 = 2; // 's' pressed for player 1
-                8'h69: received_char_player2 = 1; // 'i' pressed for player 2
-                8'h6B: received_char_player2 = 2; // 'k' pressed for player 2
+                8'h77: received_char_player1 = 2'b01; // 'w' pressed for player 1
+                8'h73: received_char_player1 = 2'b10; // 's' pressed for player 1
+                8'h69: received_char_player2 = 2'b01; // 'i' pressed for player 2
+                8'h6B: received_char_player2 = 2'b10; // 'k' pressed for player 2
                 default: {received_char_player1,received_char_player2} = 4'b0;
             endcase
 
