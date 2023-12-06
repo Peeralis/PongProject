@@ -169,13 +169,13 @@ module graphic(
         y_padl_next = y_padl_reg;     // no move
         
         if(refresh_tick)
-            if(player_received[3] & (y_padr_b < (B_WALL_T - 1 - PADr_VELOCITY))) //edit btn[3] to push k
+            if(player_received[3] && (y_padr_b < (B_WALL_T - 1 - PADr_VELOCITY))) //edit btn[3] to push k
                 y_padr_next = y_padr_reg + PADr_VELOCITY;  // move down
-            else if(player_received[2] & (y_padr_t > (T_WALL_B - 1 - PADr_VELOCITY))) //edit btn[2] to push i
+            else if(player_received[2] && (y_padr_t > (T_WALL_B - 1 - PADr_VELOCITY))) //edit btn[2] to push i
                 y_padr_next = y_padr_reg - PADr_VELOCITY;  // move up
-            else if(player_received[1] & (y_padl_b < (B_WALL_T - 1 - PADl_VELOCITY))) //edit btn[1] to push s
+            else if(player_received[1] && (y_padl_b < (B_WALL_T - 1 - PADl_VELOCITY))) //edit btn[1] to push s
                 y_padl_next = y_padl_reg + PADl_VELOCITY;  // move down
-            else if(player_received[0] & (y_padl_t > (T_WALL_B - 1 - PADl_VELOCITY))) //edit btn[0] to push w
+            else if(player_received[0] && (y_padl_t > (T_WALL_B - 1 - PADl_VELOCITY))) //edit btn[0] to push w
                 y_padl_next = y_padl_reg - PADl_VELOCITY;  // move up
     end
     
@@ -236,10 +236,10 @@ module graphic(
                     hit = 1'b1;   //hit left      
         end
         
-        else if(x_ball_r > X_MAX) // miss right
+        else if(x_ball_r >= X_MAX) // miss right
             missr = 1'b1;
             
-        else if(x_ball_r < 0) //miss left
+        else if(x_ball_l <= 0) //miss left
             missl = 1'b1;
     end                    
     

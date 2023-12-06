@@ -47,7 +47,7 @@ module system(
     reg [1:0] state_reg, state_next;
     wire [9:0] w_x, w_y;
     wire w_vid_on, w_p_tick, graph_on, hit, missl, missr;
-    wire [1:0] text_on;
+    wire text_on;
     wire [11:0] graph_rgb, text_rgb;
     reg [11:0] rgb_reg, rgb_next;
     wire [3:0] digl0, digl1, digr0, digr1;
@@ -217,7 +217,7 @@ module system(
             rgb_next = 12'h000; // blank
         
         else
-            if(text_on[1] || (state_reg == newgame) || ((state_reg == over) && text_on[0]))
+            if(text_on || (state_reg == newgame))
                 rgb_next = text_rgb;    // colors in pong_text
             
             else if(graph_on)

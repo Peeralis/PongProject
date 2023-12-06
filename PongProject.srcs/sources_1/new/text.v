@@ -26,23 +26,23 @@ module text(
     input [3:0] digl0, digl1, digr0, digr1,
     input [9:0] x, y,
 //    output [3:0] text_on,
-    output [1:0] text_on,//score,game over
+    output text_on,//score,game over
     output reg [11:0] text_rgb
     );
     
     // signal declaration
     wire [10:0] rom_addr;
 //    reg [6:0] char_addr, char_addr_s, char_addr_l, char_addr_r, char_addr_o;
-    reg [6:0] char_addr, char_addr_s, char_addr_o;
+    reg [6:0] char_addr, char_addr_s;
     reg [3:0] row_addr;
 //    wire [3:0] row_addr_s, row_addr_l, row_addr_r, row_addr_o;
-    wire [3:0] row_addr_s, row_addr_o;
+    wire [3:0] row_addr_s;
     reg [2:0] bit_addr;
 //    wire [2:0] bit_addr_s, bit_addr_l, bit_addr_r, bit_addr_o;
-    wire [2:0] bit_addr_s, bit_addr_o;
+    wire [2:0] bit_addr_s;
     wire [7:0] ascii_word;
 //    wire ascii_bit, score_on, logo_on, rule_on, over_on;
-    wire ascii_bit, score_on, over_on;
+    wire ascii_bit, score_on;
 //    wire [7:0] rule_rom_addr;
     
    // instantiate ascii rom
@@ -68,15 +68,15 @@ module text(
 //        6'h05 : char_addr_s = 7'h52;     // R
 //        6'h06 : char_addr_s = 7'h31;     // 1
 //        6'h07 : char_addr_s = 7'h00;     //
-        4'h00 : char_addr_s = 7'h53;     // S
-        4'h01 : char_addr_s = 7'h43;     // C
-        4'h02 : char_addr_s = 7'h4F;     // O
-        4'h03 : char_addr_s = 7'h52;     // R
-        4'h04 : char_addr_s = 7'h45;     // E
-        4'h05 : char_addr_s = 7'h3A;     // : //left
-        4'h06 : char_addr_s = {3'b011, digl1};    // tens digit
-        4'h07 : char_addr_s = {3'b011, digl0};    // ones digit
-        4'h08 : char_addr_s = 7'h00;     //
+        4'h00 : char_addr_s = 7'h00;     //
+        4'h01 : char_addr_s = 7'h53;     // S
+        4'h02 : char_addr_s = 7'h43;     // C
+        4'h03 : char_addr_s = 7'h4F;     // O
+        4'h04 : char_addr_s = 7'h52;     // R
+        4'h05 : char_addr_s = 7'h45;     // E
+        4'h06 : char_addr_s = 7'h3A;     // : //left
+        4'h07 : char_addr_s = {3'b011, digl1};    // tens digit
+        4'h08 : char_addr_s = {3'b011, digl0};    // ones digit
         4'h09 : char_addr_s = 7'h00;     //
         4'h0A : char_addr_s = 7'h00;     //
         4'h0B : char_addr_s = 7'h00;     //
@@ -213,21 +213,21 @@ module text(
     // - display "GAME OVER" at center
     // - scale to 32 by 64 text size
     // --------------------------------------------------------------------------
-    assign over_on = (y[9:6] == 3) && (5 <= x[9:5]) && (x[9:5] <= 13);
-    assign row_addr_o = y[5:2];
-    assign bit_addr_o = x[4:2];
-    always @*
-        case(x[8:5])
-            4'h5 : char_addr_o = 7'h47;     // G
-            4'h6 : char_addr_o = 7'h41;     // A
-            4'h7 : char_addr_o = 7'h4D;     // M
-            4'h8 : char_addr_o = 7'h45;     // E
-            4'h9 : char_addr_o = 7'h00;     //
-            4'hA : char_addr_o = 7'h4F;     // O
-            4'hB : char_addr_o = 7'h56;     // V
-            4'hC : char_addr_o = 7'h45;     // E
-            default : char_addr_o = 7'h52;  // R
-        endcase
+//    assign over_on = (y[9:6] == 3) && (5 <= x[9:5]) && (x[9:5] <= 13);
+//    assign row_addr_o = y[5:2];
+//    assign bit_addr_o = x[4:2];
+//    always @*
+//        case(x[8:5])
+//            4'h5 : char_addr_o = 7'h47;     // G
+//            4'h6 : char_addr_o = 7'h41;     // A
+//            4'h7 : char_addr_o = 7'h4D;     // M
+//            4'h8 : char_addr_o = 7'h45;     // E
+//            4'h9 : char_addr_o = 7'h00;     //
+//            4'hA : char_addr_o = 7'h4F;     // O
+//            4'hB : char_addr_o = 7'h56;     // V
+//            4'hC : char_addr_o = 7'h45;     // E
+//            default : char_addr_o = 7'h52;  // R
+//        endcase
     
     // mux for ascii ROM addresses and rgb
     always @* begin
@@ -257,16 +257,17 @@ module text(
 //                text_rgb = 12'hFF0; // yellow
 //        end
         
-        else begin // game over
-            char_addr = char_addr_o;
-            row_addr = row_addr_o;
-            bit_addr = bit_addr_o;
-            if(ascii_bit)
-                text_rgb = 12'hF00; // red
-        end        
+//        else begin // game over
+//            char_addr = char_addr_o;
+//            row_addr = row_addr_o;
+//            bit_addr = bit_addr_o;
+//            if(ascii_bit)
+//                text_rgb = 12'hF00; // red
+//        end        
     end
     
-    assign text_on = {score_on, over_on};
+//    assign text_on = {score_on, over_on};
+    assign text_on = score_on;
     
     // ascii ROM interface
     assign rom_addr = {char_addr, row_addr};
