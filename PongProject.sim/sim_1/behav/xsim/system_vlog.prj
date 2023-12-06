@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../PongProject.srcs/sources_1/new/baudrate_gen.v" \
+"../../../../PongProject.srcs/sources_1/new/clockDiv.v" \
+"../../../../PongProject.srcs/sources_1/new/graphic.v" \
+"../../../../PongProject.srcs/sources_1/new/hexTo7Segment.v" \
+"../../../../PongProject.srcs/sources_1/new/left_counter.v" \
+"../../../../PongProject.srcs/sources_1/new/quadSevenSeg.v" \
+"../../../../PongProject.srcs/sources_1/new/right_counter.v" \
+"../../../../PongProject.srcs/sources_1/new/rom.v" \
+"../../../../PongProject.srcs/sources_1/new/text.v" \
+"../../../../PongProject.srcs/sources_1/new/timer.v" \
+"../../../../PongProject.srcs/sources_1/new/uart.v" \
+"../../../../PongProject.srcs/sources_1/new/uart_rx.v" \
+"../../../../PongProject.srcs/sources_1/new/uart_tx.v" \
+"../../../../PongProject.srcs/sources_1/new/vga.v" \
+"../../../../PongProject.srcs/sources_1/new/system.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

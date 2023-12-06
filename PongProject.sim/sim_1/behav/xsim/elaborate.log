@@ -1,0 +1,28 @@
+Vivado Simulator v2023.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/AMD/Vivado/2023.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot system_behav xil_defaultlib.system xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.vga_default
+Compiling module xil_defaultlib.rom
+Compiling module xil_defaultlib.text
+Compiling module xil_defaultlib.graphic
+Compiling module xil_defaultlib.baudrate_gen
+Compiling module xil_defaultlib.uart_rx
+Compiling module xil_defaultlib.uart_tx
+Compiling module xil_defaultlib.uart
+Compiling module xil_defaultlib.timer
+Compiling module xil_defaultlib.left_counter
+Compiling module xil_defaultlib.right_counter
+Compiling module xil_defaultlib.clockDiv
+Compiling module xil_defaultlib.hexTo7Segment
+Compiling module xil_defaultlib.quadSevenSeg
+Compiling module xil_defaultlib.system
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot system_behav
