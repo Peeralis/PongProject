@@ -108,8 +108,8 @@ module graphic(
             y_delta_reg <= 10'h002;
         end
         else begin
-            y_padr_reg <= y_padl_next;
-            y_padl_reg <= y_padr_next;
+            y_padr_reg <= y_padr_next;
+            y_padl_reg <= y_padl_next;
             x_ball_reg <= x_ball_next;
             y_ball_reg <= y_ball_next;
             x_delta_reg <= x_delta_next;
@@ -143,11 +143,18 @@ module graphic(
     
     
     // assign object colors
-    assign wall_rgb   = 12'h00F;    // blue walls
-    assign padr_rgb   = 12'h00F;    // blue paddle
-    assign padl_rgb   = 12'h00F;    // blue paddle
-    assign ball_rgb   = 12'hF00;    // red ball
-    assign bg_rgb     = 12'h0FF;    // aqua background
+//    assign wall_rgb   = 12'h00F;    // blue walls
+//    assign padr_rgb   = 12'h00F;    // blue paddle
+//    assign padl_rgb   = 12'h00F;    // blue paddle
+//    assign ball_rgb   = 12'hF00;    // red ball
+//    assign bg_rgb     = 12'h0FF;    // aqua background
+    
+    assign wall_rgb   = 12'h000;    // black walls
+    assign padr_rgb   = 12'h000;    // black paddle
+    assign padl_rgb   = 12'h000;    // black paddle
+    assign ball_rgb   = 12'h0F0;    // green ball
+    assign bg_rgb     = 12'hFFF;    // white background
+
     
     
     // paddle 
