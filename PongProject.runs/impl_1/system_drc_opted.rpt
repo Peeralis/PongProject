@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Wed Dec  6 14:38:34 2023
-| Host         : DESKTOP-KTBA880 running 64-bit major release  (build 9200)
+| Date         : Mon Dec 11 03:48:49 2023
+| Host         : DESKTOP-B7717B6 running 64-bit major release  (build 9200)
 | Command      : report_drc -file system_drc_opted.rpt -pb system_drc_opted.pb -rpx system_drc_opted.rpx
 | Design       : system
 | Device       : xc7a35tcpg236-1
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 2
+             Violations found: 3
 +-------------+----------+-------------------------------------------------------------+------------+
 | Rule        | Severity | Description                                                 | Violations |
 +-------------+----------+-------------------------------------------------------------+------------+
 | CFGBVS-1    | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties         | 1          |
-| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 2          |
 +-------------+----------+-------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -48,6 +48,17 @@ Refer to the device configuration user guide for more information.
 Related violations: <none>
 
 PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT graph_unit/count[2]_i_2 is driving clock pin of 12 cells. This could lead to large hold time violations. Involved cells are:
+graph_unit/ball_rgb_reg[10], graph_unit/ball_rgb_reg[11],
+graph_unit/ball_rgb_reg[1], graph_unit/ball_rgb_reg[2],
+graph_unit/ball_rgb_reg[3], graph_unit/ball_rgb_reg[4],
+graph_unit/ball_rgb_reg[5], graph_unit/ball_rgb_reg[6],
+graph_unit/ball_rgb_reg[7], graph_unit/count_reg[0],
+graph_unit/count_reg[1], graph_unit/count_reg[2]
+Related violations: <none>
+
+PLHOLDVIO-2#2 Warning
 Non-Optimal connections which could lead to hold violations  
 A LUT vga_unit/h_count_next[9]_i_2 is driving clock pin of 20 cells. This could lead to large hold time violations. Involved cells are:
 vga_unit/h_count_next_reg[0], vga_unit/h_count_next_reg[1],

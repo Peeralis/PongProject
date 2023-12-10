@@ -29,6 +29,8 @@ module right_counter(
     
     // signal declaration
     reg [3:0] r_digr0, r_digr1, digr0_next, digr1_next;
+    assign digr0 = r_digr0;
+    assign digr1 = r_digr1;
     
     // register control
     always @(posedge clk or posedge reset)
@@ -66,8 +68,5 @@ module right_counter(
                 digr0_next = r_digr0 + 1;
     end
     
-    // output
-    assign digr0 = r_digr0;
-    assign digr1 = r_digr1;
     
 endmodule

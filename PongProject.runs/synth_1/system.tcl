@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/Vivado/PongProject/PongProject.runs/synth_1/system.tcl"
+  variable script "C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.runs/synth_1/system.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,44 +70,40 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 2
-set_param synth.incrementalSynthesisCache C:/Users/DELL/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-13200-DESKTOP-KTBA880/incrSyn
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/Vivado/PongProject/PongProject.cache/wt [current_project]
-set_property parent.project_path D:/Vivado/PongProject/PongProject.xpr [current_project]
+set_property webtalk.parent_dir {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.cache/wt} [current_project]
+set_property parent.project_path {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.xpr} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
+set_property board_part_repo_paths {C:/Users/Pascc/AppData/Roaming/Xilinx/Vivado/2023.1/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
-set_property ip_output_repo d:/Vivado/PongProject/PongProject.cache/ip [current_project]
+set_property ip_output_repo {c:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/baudrate_gen.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/clockDiv.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/graphic.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/hexTo7Segment.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/left_counter.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/quadSevenSeg.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/right_counter.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/rom.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/text.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/timer.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/uart.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/uart_rx.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/uart_tx.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/vga.v
-  D:/Vivado/PongProject/PongProject.srcs/sources_1/new/system.v
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/baudrate_gen.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/clockDiv.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/graphic.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/hexTo7Segment.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/left_counter.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/quadSevenSeg.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/right_counter.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/rom.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/text.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/timer.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/uart.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/uart_rx.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/uart_tx.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/vga.v}
+  {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/sources_1/new/system.v}
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -118,12 +114,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/Vivado/PongProject/PongProject.srcs/constrs_1/new/cons_pong.xdc
-set_property used_in_implementation false [get_files D:/Vivado/PongProject/PongProject.srcs/constrs_1/new/cons_pong.xdc]
+read_xdc {{C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/constrs_1/new/cons_pong.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/constrs_1/new/cons_pong.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental D:/Vivado/PongProject/PongProject.srcs/utils_1/imports/synth_1/system.dcp
+read_checkpoint -auto_incremental -incremental {C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.srcs/utils_1/imports/synth_1/system.dcp}
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

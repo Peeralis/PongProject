@@ -95,7 +95,7 @@ module graphic(
     wire [2:0] rom_addr, rom_col;   // 3-bit rom address and rom column
     reg [7:0] rom_data;             // data at current rom address
     wire rom_bit;                   // signify when rom data is 1 or 0 for ball rgb control
-    
+    reg [2:0] count = 0;
     
     // Register Control
     always @(posedge clk or posedge reset)
@@ -108,8 +108,8 @@ module graphic(
             y_delta_reg <= 10'h002;
         end
         else begin
-            y_padr_reg <= y_padl_next;
-            y_padl_reg <= y_padr_next;
+            y_padr_reg <= y_padr_next;
+            y_padl_reg <= y_padl_next;
             x_ball_reg <= x_ball_next;
             y_ball_reg <= y_ball_next;
             x_delta_reg <= x_delta_next;
@@ -133,7 +133,8 @@ module graphic(
     
     // OBJECT STATUS SIGNALS
     wire t_wall_on, b_wall_on, padr_on, padl_on, sq_ball_on, ball_on;
-    wire [11:0] padr_rgb, padl_rgb, ball_rgb, bg_rgb;
+    wire [11:0] padr_rgb, padl_rgb, bg_rgb;
+    reg [11:0] ball_rgb;
     
     
 //    // pixel within wall boundaries
@@ -143,11 +144,24 @@ module graphic(
     
     
     // assign object colors
-    assign wall_rgb   = 12'h00F;    // blue walls
-    assign padr_rgb   = 12'h00F;    // blue paddle
-    assign padl_rgb   = 12'h00F;    // blue paddle
-    assign ball_rgb   = 12'hF00;    // red ball
-    assign bg_rgb     = 12'h0FF;    // aqua background
+    assign wall_rgb   = 12'h000;    // black walls
+    assign padr_rgb   = 12'h000;    // black paddle
+    assign padl_rgb   = 12'h000;    // black paddle
+    assign bg_rgb     = 12'h000;    // black background
+    
+    always @(posedge hit) begin
+        if (count == 7) count = 0;
+        else count = count + 1;
+        case(count)
+            3'h1: ball_rgb = 12'hA30;    // A shade of red
+            3'h2: ball_rgb = 12'h0A5;    // A shade of green
+            3'h3: ball_rgb = 12'hF80;    // A shade of orange
+            3'h4: ball_rgb = 12'h50A;    // A shade of purple
+            3'h5: ball_rgb = 12'h0F7;    // A shade of cyan
+            3'h6: ball_rgb = 12'hFA0;    // A shade of yellow
+            default: ball_rgb = 12'h000;    // black (default)
+        endcase
+    end
     
     
     // paddle 

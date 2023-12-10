@@ -29,6 +29,8 @@ module left_counter(
     
     // signal declaration
     reg [3:0] r_digl0, r_digl1, digl0_next, digl1_next;
+    assign digl0 = r_digl0;
+    assign digl1 = r_digl1;
     
     // register control
     always @(posedge clk or posedge reset)
@@ -66,8 +68,5 @@ module left_counter(
                 digl0_next = r_digl0 + 1;
     end
     
-    // output
-    assign digl0 = r_digl0;
-    assign digl1 = r_digl1;
     
 endmodule

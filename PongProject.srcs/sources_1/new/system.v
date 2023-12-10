@@ -223,11 +223,8 @@ module system(
             else if(graph_on)
                 rgb_next = graph_rgb;   // colors in graph_text
                 
-//            else if(text_on[2])
-//                rgb_next = text_rgb;    // colors in pong_text
-                
             else
-                rgb_next = 12'h0FF;     // aqua background
+                rgb_next = 12'hFFF;     // white background
     
     // output
     assign rgb = rgb_reg;
@@ -238,7 +235,7 @@ module system(
     reg [3:0] num3,num2,num1,num0; // From left to right
     
     always @(posedge clk) begin
-       {num3,num2,num1,num0} = {digl1,digl0,digr1,digr0};
+       {num3,num2,num1,num0} = {digl1,digl0,digr1,player_received};
     end
 
     wire an0,an1,an2,an3;
