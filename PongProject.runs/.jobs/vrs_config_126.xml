@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
-<<<<<<< HEAD
 	<Run Id="impl_1" LaunchDir="C:/Users/Pascc/OneDrive/HW LAB/PongProject/PongProject.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="write_bitstream" ToStepId="write_bitstream"/>
-=======
-	<Run Id="impl_1" LaunchDir="D:/Vivado/PongProject/PongProject.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="write_bitstream" ToStepId="write_bitstream"/>
->>>>>>> b4eca37d3a9cf1fe15af34da556a9da1e149a4a1
 	<Parameters>
 		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
 		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
