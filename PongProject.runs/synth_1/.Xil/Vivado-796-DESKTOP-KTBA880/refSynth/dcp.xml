@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Checkpoint Version="20" Minor="0">
+	<BUILD_NUMBER Name="3865809"/>
+	<FULL_BUILD Name="SW Build 3865809 on Sun May  7 15:05:29 MDT 2023"/>
+	<PRODUCT Name="Vivado v2023.1 (64-bit)"/>
+	<Part Name="xc7a35tcpg236-1"/>
+	<BoardPart Name="digilentinc.com:basys3:part0:1.2"/>
+	<Top Name="system"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<File Type="VERILOG_STUB" Name="system_stub.v" ModTime="1702241934"/>
+	<File Type="VHDL_STUB" Name="system_stub.vhdl" ModTime="1702241934"/>
+	<File Type="SHAPE" Name="system.shape" ModTime="1702241934"/>
+	<File Type="EDIF" Name="system.edf" ModTime="1702241934"/>
+	<File Type="XN" Name="system.xn" ModTime="1702241934"/>
+	<File Type="INCR" Name="system.incr" ModTime="1702241934"/>
+	<File Type="RDA" Name="system.rda" ModTime="1702241934"/>
+	<File Type="JSON_RDA" Name="system_rda.json" ModTime="1702241934"/>
+	<File Type="WDF" Name="system.wdf" ModTime="1702241934"/>
+	<File Type="SYNTH" Name="system.synth" ModTime="1702241934"/>
+</Checkpoint>
+

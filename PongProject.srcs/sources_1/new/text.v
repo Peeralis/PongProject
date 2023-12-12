@@ -1,10 +1,8 @@
 module text(
     input clk,
-//    input [1:0] ball,
     input [3:0] digl0, digl1, digr0, digr1,
     input [9:0] x, y,
-//    output [3:0] text_on,
-    output text_on,//score,game over
+    output text_on,
     output reg [11:0] text_rgb
     );
     
@@ -28,7 +26,6 @@ module text(
    // - line 1, 16 chars: "Score: dd Ball: d"
    // ---------------------------------------------------------------------------
    assign score_on = (y >= 32) && (y < 64) && (x[9:4] < 64);
-   //assign score_on = (y[9:5] == 0) && (x[9:4] < 16);
    assign row_addr_s = y[4:1];
    assign bit_addr_s = x[3:1];
    always @*
@@ -51,7 +48,6 @@ module text(
         default: char_addr_s = 7'h00;
     endcase
     
-    
     // mux for ascii ROM addresses and rgb
     always @* begin
         text_rgb = 12'hFFF;     // white background
@@ -66,7 +62,6 @@ module text(
               
     end
     
-//    assign text_on = {score_on, over_on};
     assign text_on = {score_on};
     
     // ascii ROM interface

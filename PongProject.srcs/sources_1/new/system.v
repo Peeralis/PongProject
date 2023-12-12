@@ -23,7 +23,6 @@
 module system(
     input clk,              // 100MHz
     input reset,            // btnC
-//    input [3:0] btn,        // btnD, btnU, btnL, btnR
     output hsync,           // to VGA Connector
     output vsync,           // to VGA Connector
     output [11:0] rgb,       // to DAC, to VGA Connector
@@ -51,10 +50,8 @@ module system(
     wire [11:0] graph_rgb, text_rgb;
     reg [11:0] rgb_reg, rgb_next;
     wire [3:0] digl0, digl1, digr0, digr1;
-//    reg [3:0] r_digr0, r_digr1, r_digl0, r_digl1; //add
     reg gra_still, d_incl, d_incr, d_clr, timer_start;
     wire timer_tick, timer_up;
-//    reg [1:0] ball_reg, ball_next;
     wire [1:0] received_char_player1, received_char_player2;
     wire [3:0] player_received = {received_char_player2,received_char_player1};
     
@@ -77,7 +74,6 @@ module system(
         .digl1(digl1),
         .digr0(digr0),
         .digr1(digr1),
-//        .ball(ball_reg),
         .text_on(text_on),
         .text_rgb(text_rgb));
         
@@ -104,17 +100,6 @@ module system(
         .timer_tick(timer_tick),
         .timer_start(timer_start),
         .timer_up(timer_up));
-    
-//    counter counter_unit(
-//        .clk(clk),
-//        .reset(reset),
-//        .d_incl(d_incl),
-//        .d_incr(d_incr),
-//        .d_clr(d_clr),
-//        .digl0(digl0),
-//        .digl1(digl1),
-//        .digr0(digr0),
-//        .digr1(digr1));
         
     left_counter lcounter_unit(
         .clk(clk),
@@ -131,19 +116,16 @@ module system(
         .d_clr(d_clr),
         .digr0(digr0),
         .digr1(digr1));
-       
-    
+          
     // FSMD state and registers
     always @(posedge clk or posedge reset)
         if(reset) begin
             state_reg <= newgame;
-//            ball_reg <= 0;
             rgb_reg <= 0;
         end
     
         else begin
             state_reg <= state_next;
-//            ball_reg <= ball_next;
             if(w_p_tick)
                 rgb_reg <= rgb_next;
         end
@@ -156,25 +138,18 @@ module system(
         d_incr = 1'b0;
         d_clr = 1'b0;
         state_next = state_reg;
-//        ball_next = ball_reg;
         
         case(state_reg)
             newgame: begin
-//                ball_next = 2'b11;          // three balls
                 d_clr = 1'b1;               // clear score
                 
                 if(player_received != 4'b0000) begin      // button pressed
                     state_next = play;
-//                    ball_next = ball_reg - 1;    
                 end
             end
             
             play: begin
                 gra_still = 1'b0;   // animated screen
-                
-//                if(hit)
-////                    d_inc = 1'b1;   // increment score
-//                    pass;
                 
                 if(missr) begin
                     if(digl1==9 && digl0==9)
@@ -185,7 +160,6 @@ module system(
                         state_next = newball;
                     
                     timer_start = 1'b1;     // 2 sec timer
-//                    ball_next = ball_reg - 1;
                 end
                 
                 else if(missl) begin
@@ -197,7 +171,6 @@ module system(
                         state_next = newball;
                     
                     timer_start = 1'b1;     // 2 sec timer
-//                    ball_next = ball_reg - 1;
                 end
             end
             

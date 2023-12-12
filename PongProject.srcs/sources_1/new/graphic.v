@@ -21,30 +21,12 @@ module graphic(
     
     
 //    // WALLS
-//    // LEFT wall boundaries
-//    parameter L_WALL_L = 32;    
-//    parameter L_WALL_R = 39;    // 8 pixels wide
     // TOP wall boundaries
     parameter T_WALL_T = 64;    
     parameter T_WALL_B = 71;    // 8 pixels wide
     // BOTTOM wall boundaries
     parameter B_WALL_T = 472;    
     parameter B_WALL_B = 479;    // 8 pixels wide
-    
-    
-    
-//    // PADDLE
-//    // paddle horizontal boundaries
-//    parameter X_PAD_L = 600;
-//    parameter X_PAD_R = 603;    // 4 pixels wide
-//    // paddle vertical boundary signals
-//    wire [9:0] y_pad_t, y_pad_b;
-//    parameter PAD_HEIGHT = 72;  // 72 pixels high
-//    // register to track top boundary and buffer
-//    reg [9:0] y_pad_reg = 204;      // Paddle starting position
-//    reg [9:0] y_pad_next;
-//    // paddle moving velocity when a button is pressed
-//    parameter PAD_VELOCITY = 3;     // change to speed up or slow down paddle movement
     
     //Add by myself
     // PADDLE
@@ -138,7 +120,6 @@ module graphic(
     
     
 //    // pixel within wall boundaries
-//    assign l_wall_on = ((L_WALL_L <= x) && (x <= L_WALL_R)) ? 1 : 0;
     assign t_wall_on = ((T_WALL_T <= y) && (y <= T_WALL_B)) ? 1 : 0;
     assign b_wall_on = ((B_WALL_T <= y) && (y <= B_WALL_B)) ? 1 : 0;
     
@@ -235,9 +216,6 @@ module graphic(
         
         else if(y_ball_b > (B_WALL_T))         // reach bottom wall
             y_delta_next = BALL_VELOCITY_NEG;   // move up
-        
-//        else if(x_ball_l <= L_WALL_R)           // reach left wall
-//            x_delta_next = BALL_VELOCITY_POS;   // move right
         
         else if((x_padr_l <= x_ball_r) && (x_ball_r <= x_padr_r) &&
                 (y_padr_t <= y_ball_b) && (y_ball_t <= y_padr_b)) begin
